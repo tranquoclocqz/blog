@@ -1,0 +1,40 @@
+
+  <div class="sidebar-header">
+    <h3>Bootstrap Sidebar</h3>
+</div>
+<ul class="list-unstyled components">
+    <p>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+    </p>
+    <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Danh mục</a>
+        <ul class="collapse list-unstyled {{ (Request::is('admin/category*') ? 'show' : '') }}" id="homeSubmenu">
+            <li>
+                <a href="{{ route('category.index',['type'=>'post']) }}">Danh mục post</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">About</a>
+    </li>
+    <li>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle {{ (Request::is('admin/post*') ? 'show' : '') }}">Post</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li>
+                <a href="{{ route('post.index',['type'=>'post']) }}">Post</a>
+            </li>
+            <li>
+                <a href="#">Page 2</a>
+            </li>
+            <li>
+                <a href="#">Page 3</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Portfolio</a>
+    </li>
+    <li>
+        <a href="#">Contact</a>
+    </li>
+</ul>
