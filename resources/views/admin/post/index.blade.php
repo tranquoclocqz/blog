@@ -20,6 +20,7 @@
 			<tr>
 				<th><input type="checkbox" class="checkall"></th>
 				<th>STT</th>
+				<th></th>
 				<th>Tên</th>
 				<th>Ngày tạo</th>
 				<th>Ngày sữa</th>
@@ -28,7 +29,25 @@
 			</tr>
 		</thead>
 		<tbody>
-			
+			@foreach ($posts as $key => $value)
+			<tr>
+				<td><input type="checkbox" class="icheck" value="{{ $value->id }}"></td>
+				<td>{{ $key + 1 }}</td>
+				<td><img src="{{asset('public/upload').'/'.$value->photo}}" alt="" class="img-fluid imgt"></td>
+				<td> {{ $value->name }} </td>
+				<td>
+					{{ $value->created_at }}
+				</td>
+				<td>
+					{{ $value->updated_at }}
+				</td>
+				<td></td>
+				<td>
+					<a href="{{ route('post.edit',['post'=>$value->id,'type'=>$_GET['type']]) }}" class="btn btn-outline-primary"><i class="fa fa-pencil-alt"></i></a>
+					<a href="{{ route('post.delete',['id'=>$value->id,'type'=>$_GET['type']]) }}" class="btn btn-outline-danger"><i class="fas fa-times"></i></a>
+				</td>
+			</tr>
+			@endforeach
 		</tbody>
 	</table>
 </div>
@@ -42,7 +61,7 @@
 				var r = confirm('Bạn có muốn xóa các mục đã chọn');
 				if (r) {
 					$("#idChecked").val();
-					
+					window.location.href = "{{ route('post.deleteall') }}/"+$("#idChecked").val()+"?type={{ $_GET['type'] }}";
 				}
 			} else {
 				alert('Bạn chưa chọn mục cần xóa');

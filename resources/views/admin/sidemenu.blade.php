@@ -6,7 +6,7 @@
     <p>
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </p>
-    <li class="active">
+    <li class="{{ (Request::is('admin/category*') ? 'active' : '') }}">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Danh mục</a>
         <ul class="collapse list-unstyled {{ (Request::is('admin/category*') ? 'show' : '') }}" id="homeSubmenu">
             <li>
@@ -14,22 +14,16 @@
             </li>
         </ul>
     </li>
-    <li>
-        <a href="#">About</a>
-    </li>
-    <li>
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle {{ (Request::is('admin/post*') ? 'show' : '') }}">Post</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu">
+    <li class="{{ (Request::is('admin/post*') ? 'active' : '') }}">
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle  ">Post</a>
+        <ul class="collapse list-unstyled {{ (Request::is('admin/post*') ? 'show' : '') }}" id="pageSubmenu">
             <li>
                 <a href="{{ route('post.index',['type'=>'post']) }}">Post</a>
             </li>
-            <li>
-                <a href="#">Page 2</a>
-            </li>
-            <li>
-                <a href="#">Page 3</a>
-            </li>
         </ul>
+    </li>
+    <li >
+        <a href="#">About</a>
     </li>
     <li>
         <a href="#">Portfolio</a>

@@ -1,4 +1,17 @@
 <?php 
+
+if (!function_exists('makedir')) {
+	function makedir(){
+		$year = date("Y");   
+		$month = date("m");   
+		$filename2 = $year."/".$month;
+		if(!File::exists($filename2)) {
+			File::makeDirectory($filename2, $mode = 0777, true);
+		}
+		return $filename2;
+	}
+}
+
 function changeTitle($str) {
 	
 	$str = stripUnicode($str);
