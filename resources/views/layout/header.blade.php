@@ -10,9 +10,6 @@
 			<li class="nav-item active">
 				<a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
 			</li>
-			@foreach($categories as $value)
-				{{ var_dump($value->ten) }}
-			@endforeach
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -35,4 +35,9 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 	Route::get('post/deleteall/{id?}','admin\\postController@deleteAll')->name('post.deleteall');
 	
 });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'frontend\\homeController@home')->name('home');
+Route::get('/{slug}', 'frontend\\homeController@page')->name('page');
+Route::get('/category/{type}', 'frontend\\homeController@archive')->name('archive');
+Route::get('/tags/{slug}', 'frontend\\homeController@tags')->name('tags');
+Route::get('/search/{keyword}', 'frontend\\homeController@search')->name('search');
+Route::get('/{slug}.html', 'frontend\\homeController@single')->name('single');

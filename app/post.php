@@ -16,4 +16,8 @@ class post extends Model
 		'posts_status'=>'1',
 		'alt'=>'',
 	];
+
+	public function author(){
+		return $this->belongsTo('App\Admin','author_id','id');
+	}
 }

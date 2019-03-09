@@ -25,4 +25,20 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function single(){
+        
+    }
+    public function archive(){
+        
+    }
+    public function tags(){
+        
+    }
+    public function page(){
+        
+    }
+    public function search(){
+        
+    }
 }

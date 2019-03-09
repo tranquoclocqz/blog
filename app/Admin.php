@@ -30,4 +30,8 @@ class Admin extends Authenticatable
    /* public function encryptPassword(){
         return bcrypt($this->password); 
     }*/
+
+    public function post(){
+        return $this->hasMany('App\post','id','author_id');
+    }
 }

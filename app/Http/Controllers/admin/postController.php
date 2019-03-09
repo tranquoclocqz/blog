@@ -8,7 +8,7 @@ use App\post;
 use App\Helpers\helpers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
-
+use Auth;
 class postController extends Controller
 {
     /**
@@ -57,6 +57,7 @@ class postController extends Controller
         $post->description = $request->txt_mota;
         $post->content = $request->txt_content;
         $post->seo = json_encode(array('title'=>$request->txt_title,'keywords'=>$request->txt_keywords,'description'=>$request->txt_description),true);
+        $post->author_id = Auth::guard('admins')->user()->id;
         if ($request->hasFile('file')) {
             $image = $request->file('file');
             $name =  $slug.'-'.rand(10,1000).'.'.$image->getClientOriginalExtension();
@@ -115,6 +116,7 @@ class postController extends Controller
         $post->alt =  (!empty($request->txt_alt)) ? $request->txt_alt : $request->txt_name;
         $post->description = $request->txt_mota;
         $post->content = $request->txt_content;
+        $post->author_id = Auth::guard('admins')->user()->id;
         $post->seo = json_encode(array('title'=>$request->txt_title,'keywords'=>$request->txt_keywords,'description'=>$request->txt_description),true);
         if ($request->hasFile('file')) {
             $image = $request->file('file');

@@ -16,12 +16,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191); //NEW: Increase StringLength
-        View::composer('layout.header', function( $view ) {
-           $category = new category();
-           $categories = $category->select('id','ten','slug','parent_id')->orderBy('id','desc')->get();
-           $view->with('categories',  $categories);
-
-       });
     }
 
     /**
