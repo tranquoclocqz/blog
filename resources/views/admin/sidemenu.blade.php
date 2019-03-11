@@ -23,7 +23,7 @@
         </ul>
     </li>
     <li >
-        <a href="#">About</a>
+        <a href="#">Setting</a>
     </li>
     <li>
         <a href="#">Portfolio</a>

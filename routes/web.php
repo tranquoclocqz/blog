@@ -30,6 +30,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 	Route::resource('post','admin\\postController',['parameters' => [
 		'*' => 'type',
 	]]);
+	Route::resource('setting','admin\\settingController');
+	Route::post('setting','admin\\settingController@update_setting')->name('updateSetting');
 	Route::post('ajaxCreateTags','admin\\ajaxController@createTags')->name('createTag');
 	Route::get('post/delete/{id?}','admin\\postController@delete')->name('post.delete');
 	Route::get('post/deleteall/{id?}','admin\\postController@deleteAll')->name('post.deleteall');
